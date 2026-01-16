@@ -4,7 +4,13 @@
       <div class="container-fluid">
         <!-- Brand -->
         <a class="navbar-brand d-flex align-items-center" :href="brandLink">
-          <img v-if="brandLogo" :src="brandLogo" alt="logo" class="me-2" style="height: 32px; width: auto" />
+          <img
+            v-if="brandLogo"
+            :src="brandLogo"
+            alt="logo"
+            class="me-2"
+            style="height: 32px; width: auto"
+          />
           <span class="fw-bold">{{ brand }}</span>
         </a>
 
@@ -25,9 +31,19 @@
         <div class="collapse navbar-collapse" :id="collapseId">
           <!-- Left links -->
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-            <li v-for="(item, idx) in links" :key="idx" class="nav-item" :class="{ dropdown: item.children }">
+            <li
+              v-for="(item, idx) in links"
+              :key="idx"
+              class="nav-item"
+              :class="{ dropdown: item.children }"
+            >
               <template v-if="!item.children">
-                <a class="nav-link" :class="{ active: item.active }" :href="item.href">{{ item.label }}</a>
+                <a
+                  class="nav-link"
+                  :class="{ active: item.active }"
+                  :href="item.href"
+                  >{{ item.label }}</a
+                >
               </template>
 
               <template v-else>
@@ -42,7 +58,9 @@
                 </a>
                 <ul class="dropdown-menu">
                   <li v-for="(child, cidx) in item.children" :key="cidx">
-                    <a class="dropdown-item" :href="child.href">{{ child.label }}</a>
+                    <a class="dropdown-item" :href="child.href">{{
+                      child.label
+                    }}</a>
                   </li>
                 </ul>
               </template>
@@ -58,7 +76,9 @@
               :placeholder="searchPlaceholder"
               aria-label="Search"
             />
-            <button class="btn btn-outline-primary" type="submit">Search</button>
+            <button class="btn btn-outline-primary" type="submit">
+              Search
+            </button>
           </form>
 
           <!-- Slot for custom actions (login, avatar, buttons) -->
@@ -76,7 +96,7 @@
 
 <script setup>
 import { ref, computed } from 'vue'
-import { nanoid } from 'nanoid' // optional: for unique collapse id; install if used
+import { nanoid } from 'nanoid'
 
 // Props
 defineProps({
